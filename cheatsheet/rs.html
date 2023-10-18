@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>rust Cheatsheet</title>
+
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+        <!-- Font Awesome Kit's Code -->
+        <script src="https://kit.fontawesome.com/ade27430ed.js" crossorigin="anonymous"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body data-theme="dark">
+        <div class="container">
+            <!-- Theme Toggle -->
+            <div class="button"><i class="fa-solid fa-circle-half-stroke"></i></div>
+
+            <h2 class="title">RUST CHEATSHEET</h2>
+            <ul class="section-list">
+                <li> <a href="#default-structure">basic structure</a></li>
+                <li> <a href="#variables">Variables</a></li>
+                <li> <a href="#ownership">Ownership</a></li>
+                <li> <a href="#numbers">Numbers</a></li>
+                <li> <a href="#boolean">Boolean</a></li>
+                <li> <a href="#char">Character</a></li>
+                <li> <a href="#compound-types">Compound Types</a></li>
+                <li> <a href="#struct">Struct</a></li>
+                <li> <a href="#enums">Enum</a></li>
+                <li> <a href="#strings">String</a></li>
+                <li> <a href="#string-slice">String Slice</a></li>
+                <li> <a href="#vec">Vector</a></li>
+                <li> <a href="#array-slice">Array Slice</a></li>
+                <li> <a href="#functions">Functions</a></li>
+                <li> <a href="#error-handlings">Error handlings </a></li>
+            </ul>
+
+            <hr>
+            <br>
+            <div class="sections" id="default-structure">
+                <h3 class="heading">default structure </h3>
+                <pre class="code-box code-box-color">
+                    <code>
+fn main(){   
+        println!("this is default structure that use in rust lang"); 
+        println!("you can use ; every line with or without using ; in last line") 
+    }</code>
+                </pre>
+            </div>
+            <hr> <br>
+            <div class="sections" id="variables">
+                <h3 class="heading"># Variables </h3>
+                    <p>declare with <code>let</code></p>
+                    <pre class="code-box code-box-color">
+                        <code>
+fn main(){
+    let a = 2;
+    println(a)
+    }  </code>
+</pre>
+    <p>Rust has type interface<code>-></code> will assume/detect something is of certain type</p>
+    <p>Rust has a strong, static type system<code>-></code> comparing vars must be of matching types</p>
+    <p>if compiler cannot figure out use <code>-></code></p>
+    <pre class="code-box code-box-color"><code>
+let guess: u32 = 2    (declare with type)</code>
+::<type of variable>              (or use turbofish)
+let four ="4".parse::<u32>().unwrap()
+    </code></pre>
+    <p> variables are immutable by default</p>
+    <pre class="code-box code-box-color" >
+        <code>
+let mut bar = 5 </code>
+    </pre>
+    <p> shadowing variables </p>
+    <pre class="code-box code-box-color" >
+        <code>
+let x = "12"
+let x: usize = x.parse().unwrap </code>
+    </pre>
+    <p>or remove the need for mut </p>
+    <pre class="code-box code-box-color">
+        <code>
+let x = 5 
+let x = x+1</code>
+    </pre>
+                    
+                </code></div>
+    <hr> <br>
+            
+            <div class="sections" id="ownership">
+                <h3 class="heading"># Ownership </h3>
+                <p>memory is managed by system of Ownership with set of rules that compiler checks at compile time</p> 
+                <h4 class="heading">Ownership Rules</h4>
+                <p>1. Each values in Rust has a variable that's called its owner.</p>
+                <p>2. There can only be one owner at a time.</p>
+                <p>3. When the owner goes out of scope, the value will be dropped.</p>
+                <h4>Scope of a variable</h4>
+                <p> within the block it is declared in, which is denoted by brackets when an owning variable goes out of scoped, it is dropped</p>
+                <pre class="code-box code-box-color">
+                    <code>
+fn main()
+{
+    let x: i32 = 17;
+    {
+        let y: i32 = 3; 
+        println!("x is {} and y is {}",x, y);
+    }
+    println!("x is {} and y is {}",x, y); // this wont work
+}</code>
+                </pre>
+                 <h4>Shadowing in scope</h4>
+                 <p>shadowing a name does not alter or destroy the value it was bound to </p>
+                 <pre class="code-box code-box-color">
+                    <code>
+fn main(){
+    let x: i32 = 8; 
+    {
+        println!("{}", x); //prints "8"
+        let x = 12; 
+        println!("{}",x);  // prints "12"
+    }
+    println!("{}",x); //prints 8
+}</code>
+                 </pre>
+                 <h3>Constants</h3>
+                 <p>type of the value must always be annotated + always immutable + constants can be declared in any sccope, including the global scope</p>
+                 <pre class="code-box code-box-color"><code>
+const Threshold: i32 = 10; 
+__________________________
+const T: usize = 20;
+fn main()
+{
+    println!("{}", T);
+}</code></pre>
+
+            </div>    
+            </div>
+        </div>
+    </body>
